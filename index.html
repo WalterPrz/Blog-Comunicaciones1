@@ -18,7 +18,6 @@
                     Comunicaciones I - Ciclo II 2021
                 </span>
             </div>
-            
         </nav>
         <div class="container">
             <h1 class="display-4">Pasos para crear los servidores:</h1>
@@ -34,123 +33,418 @@
                     </div>
                 </div>  
             </div>
-                
-        
-        <nav>
-            <div class="nav nav-tabs" id="nav-tab" role="tablist">
-              <button class="nav-link active" id="nav-http-tab" data-bs-toggle="tab" data-bs-target="#nav-http" type="button" role="tab" aria-controls="nav-http" aria-selected="true">HTTP</button>
-              <button class="nav-link" id="nav-dns-tab" data-bs-toggle="tab" data-bs-target="#nav-dns" type="button" role="tab" aria-controls="nav-dns" aria-selected="false">DNS</button>
-              <button class="nav-link" id="nav-nfs-tab" data-bs-toggle="tab" data-bs-target="#nav-nfs" type="button" role="tab" aria-controls="nav-nfs" aria-selected="false">NFS</button>
-            </div>
-          </nav>
-          <div class="tab-content" id="nav-tabContent">
-            <div class="tab-pane fade show active" id="nav-http" role="tabpanel" aria-labelledby="nav-http-tab">
-                <!---->
-                <div class="card mt-1  mb-1">
-                    <div class="card-body">
-                        <p><strong>Instale el paquete de código abierto de NGINX.</strong></p>
-                        <samp>sudo apt-get install nginx openssl </samp>
-                    </div>
+            <nav>
+                <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                    <button class="nav-link active" id="nav-http-tab" data-bs-toggle="tab" data-bs-target="#nav-http" type="button" role="tab" aria-controls="nav-http" aria-selected="true">HTTP</button>
+                    <button class="nav-link" id="nav-dns-tab" data-bs-toggle="tab" data-bs-target="#nav-dns" type="button" role="tab" aria-controls="nav-dns" aria-selected="false">DNS</button>
+                    <button class="nav-link" id="nav-nfs-tab" data-bs-toggle="tab" data-bs-target="#nav-nfs" type="button" role="tab" aria-controls="nav-nfs" aria-selected="false">NFS</button>
                 </div>
-                <div class="card mt-1  mb-1">
-                    <div class="card-body">
-                        <p><strong>Verficacion del servicio habilitando NGNIX. </strong></p>
-                        <samp>sudo systemctl enable nginx </samp>
+            </nav>
+            <div class="tab-content" id="nav-tabContent">
+                <div class="tab-pane fade show active" id="nav-http" role="tabpanel" aria-labelledby="nav-http-tab">
+                    <div class="card mt-1  mb-1">
+                        <div class="card-body">
+                            <p><strong>Instale el paquete de código abierto de NGINX.</strong></p>
+                            <samp>sudo apt-get install nginx openssl </samp>
+                        </div>
                     </div>
-                </div>
-                <div class="card mt-1  mb-1">
-                    <div class="card-body">
-                        <p><strong>Habilitar UFW lo cual el siguiente comando el cual carga el firewall y le permite iniciarse al arrancar el sistema.  </strong></p>
-                        <samp>sudo ufw enable  </samp>
+                    <div class="card mt-1  mb-1">
+                        <div class="card-body">
+                            <p><strong>Verficacion del servicio habilitando NGNIX. </strong></p>
+                            <samp>sudo systemctl enable nginx </samp>
+                        </div>
                     </div>
-                </div>
-                <div class="card mt-1  mb-1">
-                    <div class="card-body">
-                        <p><strong>Habilitar otras conexiones, para abrir los puertos 80 y 433.  </strong></p>
-                        <samp>sudo ufw allow 'Nginx Full'  </samp>
+                    <div class="card mt-1  mb-1">
+                        <div class="card-body">
+                            <p><strong>Habilitar UFW lo cual el siguiente comando el cual carga el firewall y le permite iniciarse al arrancar el sistema.  </strong></p>
+                            <samp>sudo ufw enable  </samp>
+                        </div>
                     </div>
-                </div>
-                <div class="card mt-1  mb-1">
-                    <div class="card-body">
-                        <p><strong>Revisamos el estado de NGINX y del Firewall. </strong></p>
-                        <samp>systemctl status nginx  </samp>
-                        <samp>sudo ufw status  </samp>
+                    <div class="card mt-1  mb-1">
+                        <div class="card-body">
+                            <p><strong>Habilitar otras conexiones, para abrir los puertos 80 y 433.  </strong></p>
+                            <samp>sudo ufw allow 'Nginx Full'  </samp>
+                        </div>
                     </div>
-                </div>
-                <div class="card mt-1  mb-1">
-                    <div class="card-body">
-                        <p><strong>Copia el directorio  </strong></p>
-                        <samp>sudo cp /etc/nginx/sites-available/default /etc/nginx/sites-available/europa.conf  </samp>
+                    <div class="card mt-1  mb-1">
+                        <div class="card-body">
+                            <p><strong>Revisamos el estado de NGINX y del Firewall. </strong></p>
+                            <samp>systemctl status nginx  </samp>
+                            <samp>sudo ufw status  </samp>
+                        </div>
                     </div>
-                </div>
-                <div class="card mt-1  mb-1">
-                    <div class="card-body">
-                        <p><strong>Borramos el directorio.</strong></p>
-                        <samp>sudo rm -f /etc/nginx/sites-enabled/default </samp>
+                    <div class="card mt-1  mb-1">
+                        <div class="card-body">
+                            <p><strong>Copia el directorio  </strong></p>
+                            <samp>sudo cp /etc/nginx/sites-available/default /etc/nginx/sites-available/europa.conf  </samp>
+                        </div>
                     </div>
-                </div>
-                <div class="card mt-1  mb-1">
-                    <div class="card-body">
-                        <p><strong>Enlace el siguiente directorio.</strong></p>
-                        <samp>sudo ln -s /etc/nginx/sites-available/europa.conf /etc/nginx/sites-enabled/  </samp>
+                    <div class="card mt-1  mb-1">
+                        <div class="card-body">
+                            <p><strong>Borramos el directorio.</strong></p>
+                            <samp>sudo rm -f /etc/nginx/sites-enabled/default </samp>
+                        </div>
                     </div>
-                </div>
-                <div class="card mt-1  mb-1">
-                    <div class="card-body">
-                        <p><strong>Creamos el certificado</strong></p>
-                        <samp>mkdir /etc/nginx/certificate
-                        <samp>cd /etc/nginx/certificate</samp>
-                        <samp>openssl req -new -newkey rsa:4096 -x509 -sha256 -days 365 -nodes -out nginx-certificate.crt -keyout nginx.key</samp>
+                    <div class="card mt-1  mb-1">
+                        <div class="card-body">
+                            <p><strong>Enlace el siguiente directorio.</strong></p>
+                            <samp>sudo ln -s /etc/nginx/sites-available/europa.conf /etc/nginx/sites-enabled/  </samp>
+                        </div>
                     </div>
-                </div>
-                <div class="card mt-1  mb-1">
-                    <div class="card-body">
-                        <p><strong>Editamos el archivo europa.conf</strong></p>
-                        <samp>sudo nano /etc/nginx/sites-available/europa.conf </samp>
-                        <blockquote class="blockquote">
-                            <p>Dejamos el archivo asi: </p>
-                            <div class="mb-3">
-                                <textarea class="form-control" id="exampleFormControlTextarea1" disabled rows="20">
-                                    server {
-                                        listen 80 default_server;
-                                        listen [::]:80 default_server;
-                                        server_name europa.net www.europa.net; ;
-                                        return 301 https://$host$request_uri;
-                                    }
-                                    server {
-                                            listen 443 ssl default_server;
-                                            listen [::]:443 ssl default_server;
-                                            ssl_certificate /etc/nginx/certificate/nginx-certificate.crt;
-                                            ssl_certificate_key /etc/nginx/certificate/nginx.key;
-                                            root /var/www/html;
-                                            index index.html index.htm index.nginx-debian.html;
+                    <div class="card mt-1  mb-1">
+                        <div class="card-body">
+                            <p><strong>Creamos el certificado</strong></p>
+                            <samp>mkdir /etc/nginx/certificate
+                            <samp>cd /etc/nginx/certificate</samp>
+                            <samp>openssl req -new -newkey rsa:4096 -x509 -sha256 -days 365 -nodes -out nginx-certificate.crt -keyout nginx.key</samp>
+                        </div>
+                    </div>
+                    <div class="card mt-1  mb-1">
+                        <div class="card-body">
+                            <p><strong>Editamos el archivo europa.conf</strong></p>
+                            <samp>sudo nano /etc/nginx/sites-available/europa.conf </samp>
+                            <blockquote class="blockquote">
+                                <p>Dejamos el archivo asi: </p>
+                                <div class="mb-3">
+                                    <textarea class="form-control" id="exampleFormControlTextarea1" disabled rows="20">
+                                        server {
+                                            listen 80 default_server;
+                                            listen [::]:80 default_server;
                                             server_name europa.net www.europa.net; ;
-                                            location / {
-                                                    try_files $uri $uri/ =404;
-                                            }
-                                    }
-                                </textarea>
-                            </div>
-                        </blockquote>
+                                            return 301 https://$host$request_uri;
+                                        }
+                                        server {
+                                                listen 443 ssl default_server;
+                                                listen [::]:443 ssl default_server;
+                                                ssl_certificate /etc/nginx/certificate/nginx-certificate.crt;
+                                                ssl_certificate_key /etc/nginx/certificate/nginx.key;
+                                                root /var/www/html;
+                                                index index.html index.htm index.nginx-debian.html;
+                                                server_name europa.net www.europa.net; ;
+                                                location / {
+                                                        try_files $uri $uri/ =404;
+                                                }
+                                        }
+                                    </textarea>
+                                </div>
+                            </blockquote>
+                        </div>
                     </div>
-                </div>
-                <div class="card mt-1  mb-1">
-                    <div class="card-body">
-                        <p><strong>Guardamosel archivo  <kbd><kbd>ctrl</kbd> + <kbd>X</kbd></kbd> -> <kbd>S</kbd> -><kbd>Enter</kbd> y Reiniciamos el servicio</strong></p>
-                        <samp>sudo systemctl restart nginx  </samp>
+                    <div class="card mt-1  mb-1">
+                        <div class="card-body">
+                            <p><strong>Guardamosel archivo  <kbd><kbd>ctrl</kbd> + <kbd>X</kbd></kbd> -> <kbd>S</kbd> -><kbd>Enter</kbd> y Reiniciamos el servicio</strong></p>
+                            <samp>sudo systemctl restart nginx  </samp>
+                        </div>
                     </div>
+                    <!---->
                 </div>
-                <!---->
+                <div class="tab-pane fade" id="nav-dns" role="tabpanel" aria-labelledby="nav-dns-tab">
+                    <div class="card mt-1  mb-1">
+                        <div class="card-body">
+                            <p><strong>Establecer una ip estatica para el servidor.</strong></p>
+                            <samp>Nano /etc/network/interfaces </samp>
+                            <blockquote class="blockquote">
+                                <p>Dejamos el archivo asi: </p>
+                                <div class="mb-3">
+                                    <textarea class="form-control" id="exampleFormControlTextarea1" disabled rows="10">
+                                        source /etc/network/interface.d/*
+                                        auto lo 
+                                        iface lo inet loopback
+                                        auto ens33 #depende la interfaz de red
+                                        allow-hosting ens33
+                                        ifacee  ens33    inet static
+                                            address 192.168.1.8
+                                            gateway 192.168.1.1
+                                            netmask 255.255.255.0
+                                    </textarea>
+                                </div>
+                            </blockquote>
+                        </div>
+                    </div>
+                    <div class="card mt-1  mb-1">
+                        <div class="card-body">
+                            <p><strong>Reiniciamos </strong></p>
+                            <samp>ifdown -a; </samp>
+                            <samp>ifup -a; </samp>
+                        </div>
+                    </div>
+                    <div class="card mt-1  mb-1">
+                        <div class="card-body">
+                            <p><strong>instalamos: </strong></p>
+                            <samp>sudo apt-get install -y bind9 bind9utils bind9-doc dnsutils</samp>
+                        </div>
+                    </div>
+                    <div class="card mt-1  mb-1">
+                        <div class="card-body">
+                            <p><strong>Autorizamos conexiones por el firewall</strong></p>
+                            <samp>sudo ufw allow dns</samp>
+                        </div>
+                    </div>
+                    <div class="card mt-1  mb-1">
+                        <div class="card-body">
+                            <p><strong>creamos las zonas </strong></p>
+                            <samp>sudo nano /etc/bind/named.conf.local</samp>
+                            <blockquote class="blockquote">
+                                <p>Zona directa </p>
+                                <div class="mb-3">
+                                    <textarea class="form-control" id="exampleFormControlTextarea1" disabled rows="6">
+                                        zone "europa.net"    IN (
+                                            type master;
+                                            file "/etc/bind/forward.europa.net.db":
+                                            allow-update {none;};
+                                        );
+                                    </textarea>
+                                </div>
+                            </blockquote>
+                            <blockquote class="blockquote">
+                                <p>Zona indirecta </p>
+                                <div class="mb-3">
+                                    <textarea class="form-control" id="exampleFormControlTextarea1" disabled rows="6">
+                                        zone "1.168.192.    in-addr.arpa" { 
+                                            type master; 
+                                            file "/etc/bind/reverse.europa.net.db"; 
+                                            allow-update {none;};
+                                            }; 
+                                    </textarea>
+                                </div>
+                            </blockquote>
+                        </div>
+                    </div>
+                    <div class="card mt-1  mb-1">
+                        <div class="card-body">
+                            <p><strong>Copie las entradas de muestra en el archivo de zona llamado forward.europa.net.db para la zona de avance en el directorio / etc / bind </strong></p>
+                            <samp>sudo cp /etc/bind/db.local /etc/bind/forward.europa.net.db</samp>
+                        </div>
+                    </div>
+                    <div class="card mt-1  mb-1">
+                        <div class="card-body">
+                            <p><strong>editamos la zona </strong></p>
+                            <samp>sudo nano /etc/bind/forward.europa.net.db</samp>
+                            <blockquote class="blockquote">
+                                <p>Zona Directa </p>
+                                <div class="mb-3">
+                                    <textarea class="form-control" id="exampleFormControlTextarea1" disabled rows="20">
+                                        ; 
+                                        ; BIND data file for local loopback interface 
+                                        ;
+                                        $TTL    604800 
+                                        @       IN      SOA     ns1.europa.net. root.europa.net. ( 
+                                                                2           ; Serial 
+                                                                86400       ; Retry 
+                                                                604800      ; Refresh 
+                                                                2419200     ; Expire 
+                                                                604800 )    ; Negative Cache TTL 
+                                        ; 
+                                        ; name servers - NS records 
+                                        ;@    IN      NS      localhost.
+                                        ;@    IN      A       127.0.0.1
+                                        ;@    IN      AAA     ::1
+                                        ;Name Server Information
+                                        @    IN      NS      ns1.europa.net.
+                                        ;IP Address of Name Server
+                                        ns1 IN  A   192.168.1.3
+                                        ;Mail Exhanger
+                                        europa.net. IN    MX    10  mail.europa.net
+                                        ;A-Record HostName To Ip Address
+                                        www IN      A   192.168.1.3
+                                        mail IN     A   192.168.1.150
+                                        ;CNAME record
+                                        ftp IN  CNAME   www.europa.net
+                                    </textarea>
+                                </div>
+                            </blockquote>
+                        </div>
+                    </div>
+                    <div class="card mt-1  mb-1">
+                        <div class="card-body">
+                            <p><strong>Copie las entradas de muestra en el archivo de zona llamado reverse.europa.net.db para la zona inversa en el directorio / etc / bind y cree punteros inversos para los registros de la zona de avance anteriores. </strong></p>
+                            <samp>sudo cp /etc/bind/db.127 /etc/bind/reverse.europa.net.db</samp>
+                        </div>
+                    </div>
+                    <div class="card mt-1  mb-1">
+                        <div class="card-body">
+                            <p><strong>editamos la zona </strong></p>
+                            <samp>sudo nano /etc/bind/reverse.europa.net.db</samp>
+                            <blockquote class="blockquote">
+                                <p>Zona Inversa </p>
+                                <div class="mb-3">
+                                    <textarea class="form-control" id="exampleFormControlTextarea1" disabled rows="20">
+                                        ; 
+                                        ; BIND reverse data file for local loopback interface 
+                                        ;
+                                        $TTL    604800 
+                                        @       IN      SOA     ns1.europa.net. root.europa.net. ( 
+                                                                1           ; Serial 
+                                                                86400       ; Retry 
+                                                                604800      ; Refresh 
+                                                                2419200     ; Expire 
+                                                                604800 )    ; Negative Cache TTL 
+                                        ; 
+                                        ;@    IN      NS      localhost.
+                                        :1.0.0 IN     PTR     localhost.
+                                        ;Name Server Information
+                                        @    IN      NS      ns1.europa.net.
+                                        ;Reverse lookup for Name Server
+                                        3   IN      PTR     ns1.europa.net.
+                                        ;PTR Record IP addres to HostName
+                                        100     IN      PTR     www.euopa.net.
+                                        150     IN      PTR     mail.europa.net
+                                    </textarea>
+                                </div>
+                            </blockquote>
+                        </div>
+                    </div>
+                    <div class="card mt-1  mb-1">
+                        <div class="card-body">
+                            <p><strong>Validamos la sintaxis del archi de configuración BIND.</strong></p>
+                            <samp>sudo named-checkconf</samp>
+                        </div>
+                    </div>
+                    <div class="card mt-1  mb-1">
+                        <div class="card-body">
+                            <p><strong>Activar Zona Directa</strong></p>
+                            <samp>sudo named-checkzone europa.net /etc/bind/forward.europa.net.db</samp>
+                        </div>
+                    </div>
+                    <div class="card mt-1  mb-1">
+                        <div class="card-body">
+                            <p><strong>Activar Zona Inversa </strong></p>
+                            <samp>sudo named-checkzone 1.168.192.in-addr.arpa /etc/bind/reverse.europa.net.db</samp>
+                        </div>
+                    </div>
+                    <div class="card mt-1  mb-1">
+                        <div class="card-body">
+                            <p><strong>Reiniciamos el servicio de bind </strong></p>
+                            <samp>sudo systemctl restart bind9</samp>
+                        </div>
+                    </div>
+                    <div class="card mt-1  mb-1">
+                        <div class="card-body">
+                            <p><strong>Verificamos el estado del servicio </strong></p>
+                            <samp>sudo systemctl status bind9</samp>
+                        </div>
+                    </div>
+                    <h3>Maquina Cliente</h3>
+                    <div class="card mt-1  mb-1">
+                        <div class="card-body">
+                            <p><strong>Vaya a cualquier máquina cliente y agregue nuestra nueva dirección IP del servidor DNS en el archivo /etc/resolv.conf. </strong></p>
+                            <samp>sudo nano /etc/resolv.conf</samp>
+                            <blockquote class="blockquote">
+                                <div class="mb-3">
+                                    <textarea class="form-control" id="exampleFormControlTextarea1" disabled rows="2">
+                                        nameserver 192.168.1.3
+                                    </textarea>
+                                </div>
+                            </blockquote>
+                        </div>
+                    </div>
+                    <div class="card mt-1  mb-1">
+                        <div class="card-body">
+                            <p><strong>Utilice el comando dig para verificar la búsqueda directa </strong></p>
+                            <samp>dig www.europa.net</samp>
+                        </div>
+                    </div>  
+                    <div class="card mt-1  mb-1">
+                        <div class="card-body">
+                            <p><strong>Confirme la búsqueda inversa con el comando dig. </strong></p>
+                            <samp>dig -x 192.168.0.3</samp>
+                        </div>
+                    </div>      
+                </div>
+                <div class="tab-pane fade" id="nav-nfs" role="tabpanel" aria-labelledby="nav-nfs-tab">
+                    <div class="card mt-1  mb-1">
+                        <div class="card-body">
+                            <p><strong>instalamos: </strong></p>
+                            <samp>sudo apt install nfs-kernel-server</samp>
+                        </div>
+                    </div>
+                    <div class="card mt-1  mb-1">
+                        <div class="card-body">
+                            <p><strong>Cree un directorio para compartir archivos y carpetas a través del servidor NFS.</strong></p>
+                            <samp>sudo mkdir –p /mnt/casaMatriz</samp>
+                        </div>
+                    </div>
+                    <div class="card mt-1  mb-1">
+                        <div class="card-body">
+                            <p><strong>Como cualquier usuario del cliente utilizará el recurso compartido NFS, el permiso se establece en el usuario "nadie" y el grupo "nogroup". </strong></p>
+                            <samp>sudo chown nobody:nogroup /mnt/casaMatriz</samp>
+                        </div>
+                    </div>
+                    <div class="card mt-1  mb-1">
+                        <div class="card-body">
+                            <p><strong>Hacer que la carpeta compartida del usuario tenga permiso suficiente para leer y escribir los archivos que contiene. Sin embargo, puede configurarlo según sus necesidades.  </strong></p>
+                            <samp>sudo chmod 755 /mnt/casaMatriz</samp>
+                        </div>
+                    </div>
+                    <div class="card mt-1  mb-1">
+                        <div class="card-body">
+                            <p><strong>Agregue la información de exportación en el archivo /etc/export.</strong></p>
+                            <samp>sudo nano /etc/exports </samp>
+                            <blockquote class="blockquote">
+                                <p>Agregue la siguiente entrada al final del archivo.    </p>
+                                <div class="mb-3">
+                                    <textarea class="form-control" id="exampleFormControlTextarea1" disabled rows="2">
+                                        /mnt/casaMatriz 192.168.1.0/24(rw,sync,no_subtree_check)
+                                    </textarea>
+                                </div>
+                            </blockquote>
+                        </div>
+                    </div>
+                    <div class="card mt-1  mb-1">
+                        <div class="card-body">
+                            <p><strong>Ahora, exporte el directorio compartido.</strong></p>
+                            <samp>sudo exportfs –a</samp>
+                        </div>
+                    </div>
+                    <div class="card mt-1  mb-1">
+                        <div class="card-body">
+                            <p><strong>Si está ejecutando un firewall en su Debian, permita que el cliente se conecte a NFS usando el siguiente comando: </strong></p>
+                            <samp>sudo ufw allow from 192.168.1.0/24 to any port nfs</samp>
+                        </div>
+                    </div>
+                    <h3>Maquina Cliente</h3>
+                    <div class="card mt-1  mb-1">
+                        <div class="card-body">
+                            <p><strong>Instalamos el paquete </strong></p>
+                            <samp>sudo apt install nfs-common</samp>
+                        </div>
+                    </div>
+                    <div class="card mt-1  mb-1">
+                        <div class="card-body">
+                            <p><strong>Cree un directorio para acceder a la carpeta compartida desde el servidor.</strong></p>
+                            <samp>sudo mkdir -p /mnt/casaMatriz</samp>
+                        </div>
+                    </div>
+                    <div class="card mt-1  mb-1">
+                        <div class="card-body">
+                            <p><strong>Para el montaje permanente, agregue la siguiente entrada en el archivo / etc / fstab. Abra el archivo con cualquiera de sus editores favoritos.  </strong></p>
+                            <samp>sudo nano /etc/fstab</samp>
+                            <blockquote class="blockquote">
+                                <p>Agregue la siguiente linea </p>
+                                <div class="mb-3">
+                                    <textarea class="form-control" id="exampleFormControlTextarea1" disabled rows="2">
+                                        192.168.1.3:/mnt/casaMatriz /mnt/casaMatriz  nfs4 defaults,user,exec  0 0
+                                    </textarea>
+                                </div>
+                            </blockquote>
+                        </div>
+                    </div>  
+                    <div class="card mt-1  mb-1">
+                        <div class="card-body">
+                            <p><strong>Monte el sistema de archivos NFS utilizando el comando mount de la siguiente manera.</strong></p>
+                            <p>Utilice el comando "df -h" para ver el punto de montaje como se muestra a continuación:</p>
+                            <samp>sudo mount -a</samp>
+                        </div>
+                    </div>
+                    <div class="card mt-1  mb-1">
+                        <div class="card-body">
+                            <p><strong>Intentemos crear un archivo con comando touch en un recurso compartido NFS.</strong></p>
+                            <samp>cd /mnt/shared_nfs</samp><br> 
+                            <samp>touch archivoPrueba.txt</samp>
+                        </div>
+                    </div>    
+                </div>
             </div>
-            <div class="tab-pane fade" id="nav-dns" role="tabpanel" aria-labelledby="nav-dns-tab">
-                <!--Aqui pone lo de DNS-->
-                <!---->
-            </div>
-            <div class="tab-pane fade" id="nav-nfs" role="tabpanel" aria-labelledby="nav-nfs-tab">
-                <!--Aqui pone lo de NFS-->
-                <!---->
-            </div>
-          </div>
         </div>
         <footer class="footer mt-auto py-3 bg-dark text-white">
             <div class="container">
