@@ -21,27 +21,325 @@
         </nav>
         <div class="container">
             <h1 class="display-4">Pasos para crear los servidores:</h1>
-            <div class="card mt-3  mb-3">
-                <div class="card-body">
-                    Las diferentes configuraciones las hemos realizado en una máquina virtual con Debian 10, para configurar todo el entorno de trabajo para que funcione correctamente
-                    el Caso de Estudio de Europa.
+            <div class="row">
+                <div class="col-sm-6">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">Alumnos: </li>
+                        <li class="list-group-item">-Acosta Morales, Ricardo - AM10014</li>
+                        <li class="list-group-item">-Flores Ventura, Marco Antonio - FV16005</li>
+                        <li class="list-group-item">-Galdámez Canales, Miguel Angel - GC18090</li>
+                        <li class="list-group-item">-Pérez Tejada, José Walter - PT18003s</li>
+                    </ul>
                 </div>
-                <div class="card m-1">
-                    <div class="card-body">
-                        <p><strong>Para cada una de estas secciones es necesario realizar antes una actualizacion de paquetes.</strong></p>
-                        <samp>sudo apt-get update</samp>
+                <div class="col-sm-6">
+                    <div class="card mt-3  mb-3">
+                        <div class="card-body">
+                            Las diferentes configuraciones las hemos realizado en una máquina virtual con Debian 10, para configurar el entorno de trabajo para que funcione correctamente
+                            el Caso de Estudio de Europa.
+                        </div>
+                        <div class="card m-1">
+                            <div class="card-body">
+                                <p><strong>Para laa configuracion de la maquina virtual, para crear el implementar el HTTPS, el servidor DNS y NFS es necesario realizar antes una actualizacion de paquetes.</strong></p>
+                                <samp>sudo apt-get update</samp>
+                            </div>
+                        </div>  
                     </div>
-                </div>  
+                </div>
             </div>
             <nav>
                 <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                    <button class="nav-link active" id="nav-http-tab" data-bs-toggle="tab" data-bs-target="#nav-http" type="button" role="tab" aria-controls="nav-http" aria-selected="true">HTTP</button>
+                    <button class="nav-link active" id="nav-inicio-tab" data-bs-toggle="tab" data-bs-target="#nav-inicio" type="button" role="tab" aria-controls="nav-inicio" aria-selected="true">Inicio</button>
+                    <button class="nav-link" id="nav-topo-tab" data-bs-toggle="tab" data-bs-target="#nav-topo" type="button" role="tab" aria-controls="nav-topo	" aria-selected="false">Topología</button>
+                    <button class="nav-link" id="nav-vlan-tab" data-bs-toggle="tab" data-bs-target="#nav-vlan" type="button" role="tab" aria-controls="nav-vlan	" aria-selected="false">VLAN</button>
+                    <button class="nav-link" id="nav-nat-tab" data-bs-toggle="tab" data-bs-target="#nav-nat" type="button" role="tab" aria-controls="nav-nat	" aria-selected="false">NAT</button>
+                    <button class="nav-link" id="nav-dhcp-tab" data-bs-toggle="tab" data-bs-target="#nav-dhcp" type="button" role="tab" aria-controls="nav-dhcp	" aria-selected="false">DHCP</button>
+                    <button class="nav-link" id="nav-servicios-tab" data-bs-toggle="tab" data-bs-target="#nav-servicios" type="button" role="tab" aria-controls="nav-servicios	" aria-selected="false">Servicios</button>
+                    <button class="nav-link" id="nav-http-tab" data-bs-toggle="tab" data-bs-target="#nav-http" type="button" role="tab" aria-controls="nav-http" aria-selected="false">HTTPS</button>
                     <button class="nav-link" id="nav-dns-tab" data-bs-toggle="tab" data-bs-target="#nav-dns" type="button" role="tab" aria-controls="nav-dns" aria-selected="false">DNS</button>
                     <button class="nav-link" id="nav-nfs-tab" data-bs-toggle="tab" data-bs-target="#nav-nfs" type="button" role="tab" aria-controls="nav-nfs" aria-selected="false">NFS</button>
                 </div>
             </nav>
             <div class="tab-content" id="nav-tabContent">
-                <div class="tab-pane fade show active" id="nav-http" role="tabpanel" aria-labelledby="nav-http-tab">
+                <div class="tab-pane fade show active" id="nav-inicio" role="tabpanel" aria-labelledby="nav-inicio-tab">
+                    <div class="card mt-1  mb-1">
+                        <div class="card-body">
+                            <h3>2.1. Caso Europa</h3>
+                            <p class="lead">
+                                Una empresa posee tres sucursales en diferentes puntos del país. Dispone una casa matriz, en la cual
+                                debe instalar una Sala de Equipos, de tal manera de que le brinden servicios básicos al resto de
+                                sucursales haciendo uso de Internet para tales propósitos.
+                            </p>
+                            <p class="lead">
+                                Posee la Casa Matriz en San Salvador con la estructura: Finanzas, Ventas y Producción. En cada sucursal
+                                dispone de la misma estructura que en la casa matriz, sólo que en menor proporción.
+                            </p>
+                            <p><strong>Requerimientos del caso</strong></p>
+                            <ol class="list-group list-group-numbered">
+                                <li class="list-group-item">Diseñar un esquema de dirección IP acorde a la empresa.</li>
+                                <li class="list-group-item">Modelar la red en GNS3, un host por sucursal según corresponda.</li>
+                                <li class="list-group-item">Diseñar un esquema de VLAN, que sea funcional en toda la empresa, y moldearlo en GNS3</li>
+                                <li class="list-group-item">Establecer los protocolos de enrutamiento adecuados para la empresa.</li>
+                                <li class="list-group-item">Establecer una DMZ, para levantar servicios a través de NAT.</li>
+                                <li class="list-group-item">Montar los servicios web necesarios: Http y HTTPS en una máquina virtual, que acceda a aplicaciones dispuestas a través de un servicio de archivos NFS.</li>
+                                <li class="list-group-item">Montar el servicio de DNS, en una máquina virtual, para la resolución de nombres de dominio: europa.net</li>
+                                <li class="list-group-item">Establecer el servicio de DHCP según sea necesario en cada sucursal.</li>
+                                <li class="list-group-item">
+                                    Presentar un presupuesto detallado de costo real, así como características reales del equipamiento a
+                                    utilizar en el despliegue de la red y sala de datos.
+                                </li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+                <!--------------------------------------------------Topologia------------------------------------------------------->
+                <div class="tab-pane fade" id="nav-topo" role="tabpanel" aria-labelledby="nav-topo-tab">
+                    <h3>Topología de red</h3>
+                    <div class="card mt-1  mb-1">
+                        <div class="card-body">
+                            <h4>1- Diseñar esquema de direcciones IP</h4>
+                            <p><strong>
+                                A partir de la red utilizada en laboratorios 172.16.0.0/16 se calculó una subred por cada departamento necesario. 
+                                Se asumió un total de 600 hosts de finanzas, 480 hosts para el departamento de ventas, 
+                                360 hosts para el departamento de producción y 120 para administración. Esto llevo a la siguiente clasificación de subredes:                             </strong></p>
+                                
+                            <img src="img/topo1.PNG" class="img-fluid mx-auto d-block " alt="...">
+                        </div>
+                    </div>
+                    <div class="card mt-1  mb-1">
+                        <div class="card-body">
+                            <h4>2- Modelar la red en GNS3, un host por sucursal según corresponda</h4>
+                            <p><strong>
+                                Se desarrolló la topología de la siguiente manera:300,240,360 
+                            </strong></p>
+                                
+                            <img src="img/topo2.PNG" class="img-fluid mx-auto d-block " alt="...">
+                        </div>
+                    </div>
+                </div>
+                <!--------------------------------------------------VLAN------------------------------------------------------->
+                <div class="tab-pane fade" id="nav-vlan" role="tabpanel" aria-labelledby="nav-vlan-tab">
+                    <h3>VLAN</h3>
+                    <p class="lead">
+                        Las VLAN o también conocidas como «Virtual LAN» nos permite crear redes lógicamente independientes dentro de la misma red física,
+                        haciendo uso de switches gestionables que soporten VLANs para segmentar adecuadamente la red.
+                    </p>
+                    <p class="lead">
+                        También es muy importante que los routers que utilicemos soporten VLAN, de lo contrario, no podremos gestionarlas todas ni permitir o denegar la comunicación entre ellas.                    </p>
+                    <div class="card mt-1  mb-1">
+                        <div class="card-body">
+                            <h4>1.  Creación de VLAN:</h4>
+                            <img src="img/vlan1.PNG" class="img-fluid mx-auto d-block " alt="...">
+                        </div>
+                    </div>
+                    <div class="card mt-1  mb-1">
+                        <div class="card-body">
+                            <h4>2. Configuración de interfaces: </h4>
+                            <p><strong>
+                                Se entra al modo de configuración del router con configure terminal y se selecciona 
+                                un rango de interfaces que se establecerán como switchport, de la siguiente forma: 
+                            </strong></p>
+                            <img src="img/vlan2.PNG" class="img-fluid mx-auto d-block " alt="...">
+                        </div>
+                    </div>
+                    <div class="card mt-1  mb-1">
+                        <div class="card-body">
+                            <p><strong>
+                                Luego se configuran las interfaces entre switches como enlaces troncales con 
+                                los siguientes comandos: 
+                            </strong></p>
+                            <img src="img/vlan3.PNG" class="img-fluid mx-auto d-block " alt="...">
+                        </div>
+                    </div>
+                    <div class="card mt-1  mb-1">
+                        <div class="card-body">
+                            <p><strong>
+                                Ahora los las interfaces conectadas hacia los hosts se configuran en modo de acceso 
+                                y se le asigna la VLAN correspondiente según el VLAN_ID:
+                            </strong></p>
+                            <img src="img/vlan4.PNG" class="img-fluid mx-auto d-block " alt="...">
+                        </div>
+                    </div>     
+                    <div class="card mt-1  mb-1">
+                        <div class="card-body">
+                            <p><strong>
+                                De esta manera los hosts que pertenezcan a la misma VLAN podrán interactuar entre 
+                                ellas. Es necesario trabajar con subinterfaces encapsuladas con 802.1q para que el 
+                                router pueda interconectar los enlaces troncales previamente configurados. En el 
+                                router se configura las subinterfaces de la siguiente manera:
+                            </strong></p>
+                            <img src="img/vlan5.PNG" class="img-fluid mx-auto d-block " alt="...">
+                        </div>
+                    </div>
+                    <div class="card mt-1  mb-1">
+                        <div class="card-body">
+                            <p><strong>
+                                También es necesario encender la interfaz principal pero no es necesario asignarle 
+                                alguna IP:
+                            </strong></p>
+                            <img src="img/vlan6.PNG" class="img-fluid mx-auto d-block " alt="...">
+                        </div>
+                    </div> 
+                    <div class="card mt-1  mb-1">
+                        <div class="card-body">
+                            <p><strong>
+                                Usar subinterfaces en router, posibilita que múltiples VLAN puedan agruparse en una 
+                                sola conexión de red. Finalmente, para conocer información sobre las VLAN, dentro 
+                                del switch puede ocuparse el siguiente comando:                                     
+                            </strong></p>
+                            <img src="img/vlan7.PNG" class="img-fluid mx-auto d-block " alt="...">
+                        </div>
+                    </div>
+                </div>
+                <!--------------------------------------------------NAT------------------------------------------------------->
+                <div class="tab-pane fade" id="nav-nat" role="tabpanel" aria-labelledby="nav-nat-tab">
+                    <h3>DHCP</h3>
+                    <p class="lead">
+                        Network Address Translator, o en español traductor de direcciones de red. Su función es precisamente esa, 
+                        traducir las direcciones para que sean posibles las conexiones. El NAT es una parte fundamental entre nuestros dispositivos e Internet.                    
+                    </p>
+                    <p class="lead">
+                        Forma parte del router, módem o el equipo que utilicemos para conectarnos a la red. En ocasiones es conocido como enmascaramiento de direcciones IP. 
+                        Esto es así ya que permite crear una dirección IP pública para que posibles extraños no pirateen nuestra red.                    
+                    </p>
+                    <div class="card mt-1  mb-1">
+                        <div class="card-body">
+                            <p><strong>
+                                De la siguiente manera se configura en modo NAT overload para que se asigne de 
+                                manera dinámica los puertos a los hosts que requieren y salgan del router. Dentro del 
+                                comando access-list 100 permit ip, se agregan las subredes utilizadas por cada 
+                                departamento y la máscara de red se coloca en formato wildcard:                                   
+                            </strong></p>
+                            <img src="img/nat1.PNG" class="img-fluid mx-auto d-block " alt="...">
+                            <img src="img/nat2.PNG" class="img-fluid mx-auto d-block " alt="...">
+                        </div>
+                    </div> 
+                </div>
+                <!--------------------------------------------------DHCP------------------------------------------------------->
+                <div class="tab-pane fade" id="nav-dhcp" role="tabpanel" aria-labelledby="nav-dhcp-tab">
+                    <h3>DHCP</h3>
+                    <p class="lead">
+                        El DHCP es una extensión del protocolo Bootstrap (BOOTP) desarrollado en 1985 para conectar dispositivos 
+                        como terminales y estaciones de trabajo sin disco duro con un Bootserver, del cual reciben su sistema operativo.                    
+                    </p>
+                    <p class="lead">
+                        El DHCP se desarrolló como solución para redes de gran envergadura y ordenadores portátiles y por ello complementa a BOOTP, entre otras cosas, 
+                        por su capacidad para asignar automáticamente direcciones de red reutilizables y por la existencia de posibilidades de configuración adicionales.                    
+                    </p>
+                    <div class="card mt-1  mb-1">
+                        <div class="card-body">
+                            <p><strong>
+                                Para configurar el router como servidor DHCP, se crea un dhcp pool a cada VLAN de 
+                                la siguiente manera:                                 
+                            </strong></p>
+                            <img src="img/dhcp1.PNG" class="img-fluid mx-auto d-block " alt="...">
+                            <img src="img/dhcp2.PNG" class="img-fluid mx-auto d-block " alt="...">
+                            <img src="img/dhcp3.PNG" class="img-fluid mx-auto d-block " alt="...">
+                        </div>
+                    </div>
+                    <div class="card mt-1  mb-1">
+                        <div class="card-body">
+                            <p><strong>
+                                Donde network es la subred asignada a la VLAN y default-router el Gateway de esta.
+                            </strong></p>
+                            <p><strong>
+                                Al correr el comando ip dhcp dentro de un host, el dhcp asignará automáticamente 
+                                una dirección ip a él.
+                            </strong></p>
+                            <p><strong>
+                                Para PC2                                
+                            </strong></p>
+                            <img src="img/dhcp4.PNG" class="img-fluid mx-auto d-block " alt="...">
+                        </div>
+                    </div>  
+                    <div class="card mt-1  mb-1">
+                        <div class="card-body">
+                            <p><strong>
+                                Para PC6                              
+                            </strong></p>
+                            <img src="img/dhcp5.PNG" class="img-fluid mx-auto d-block " alt="...">
+                        </div>
+                    </div>
+                </div>
+                <!--------------------------------------------------servicio------------------------------------------------------->
+                <div class="tab-pane fade" id="nav-servicios" role="tabpanel" aria-labelledby="nav-servicio-tab">
+                    <h3>Servicios</h3>
+                    <p class="lead">
+                        Se utilizaron lista de accesos (ACL) para permitir el tráfico de la zona 
+                        desmilitarizada donde se colocarán los servicios HTTP, HTTPS, NFS y DNS 
+                        para toda la red. Dentro de las listas se permite el acceso a ciertos puertos 
+                        que utilizarás los protocolos o servicios previamente mencionados.                        
+                    </p>
+                    <p class="lead">
+                        Se creó una lista de acceso estándar para autorizar a las redes de cada VLAN 
+                        a acceder a los servicios, esto se realizó dentro del router frontera entre las 
+                        redes de cada departamento y donde se implementarán los servicios. Y una 
+                        lista de acceso extendida para autorizar solo a los puertos específicos de 
+                        cada servicio:
+                    </p>
+                    <div class="card mt-1  mb-1">
+                        <div class="card-body">
+                            <h4>ACL estándar:</h4>
+                            <img src="img/servi1.PNG" class="img-fluid mx-auto d-block " alt="...">
+                        </div>
+                    </div>
+                    <div class="card mt-1  mb-1">
+                        <div class="card-body">
+                            <h4>ACL extendida:</h4>
+                            <p><strong>
+                                1’ indica el id de la lista estándar que puede ser entre 1-99 o 1300-1999, el 
+                                comando permit indica que permite el paso de la red siguiente, ubicando la 
+                                dirección ip de ella con una máscara de subred en formato wildcard.                                
+                            </strong></p>
+                            <p><strong>
+                                El comando deny es para negar el acceso y el comando any indica cualquier 
+                                red.                              
+                            </strong></p>
+                            <img src="img/servi2.PNG" class="img-fluid mx-auto d-block " alt="...">
+                        </div>
+                    </div>
+                    <div class="card mt-1  mb-1">
+                        <div class="card-body">
+                            <p><strong>
+                                Se utilizan los mismos comandos que la ACL estándar, pero en este caso se pueden 
+                                especificar la red o host de origen y de destino, como también el protocolo y puerto 
+                                específico. Por ello se especifica al principio el protocolo tcp o el protocolo udp, al final el 
+                                puerto 80 que se utiliza en HTTP, el puerto 443 que se utiliza en HTTP, los puertos 111 y 
+                                2049 que se utilizan en NFS y por último el puerto 53 que se utiliza en DNS.                                
+                            </strong></p>
+                            <p><strong>
+                                Para aplicar la lista de acceso a la interfaz deseada, se cambia al modo de configuración del 
+                                router, se escoge la interfaz y se aplica la ACL de la siguiente manera:                           
+                            </strong></p>
+                            <img src="img/servi3.PNG" class="img-fluid mx-auto d-block " alt="...">
+                        </div>
+                    </div>
+                    <div class="card mt-1  mb-1">
+                        <div class="card-body">
+                            <p><strong>
+                                Luego del comando access-group se coloca el id de la ACL y si es de entrada 
+                                o salida (in/out).
+                                                                
+                            </strong></p>
+                            <p><strong>
+                                Para mostrar todas las listas de acceso se utiliza el siguiente comando: show 
+                                ip access-lists, obteniendo el siguiente resultado.                         
+                            </strong></p>
+                            <img src="img/servi4.PNG" class="img-fluid mx-auto d-block " alt="...">
+                        </div>
+                    </div>  
+                </div>
+                <!--------------------------------------------------HTTPS------------------------------------------------------->
+                <div class="tab-pane fade" id="nav-http" role="tabpanel" aria-labelledby="nav-http-tab">
+                    <h3>HTTPS</h3>
+                    <p class="lead">
+                        (protocolo de Transferencia de Hiper-Texto) es un protocolo que permite establecer una conexión segura entre el servidor y 
+                        el cliente, que no puede ser interceptada por personas no autorizadas. 
+                        En resumidas cuentas, es la versión segura de el http (Hyper Text Transfer Protocol)                        
+                    </p>
+                    <p class="lead">
+                        Una conexión HTTP estándar en Internet puede ser fácilmente secuestrada por partes no autorizadas. El propósito de una conexión HTTPS es evitar esto: 
+                        encriptar los datos para asegurar una transmisión de datos segura. La transmisión está encriptada y el servidor autenticado.                        
+                    </p>
                     <div class="card mt-1  mb-1">
                         <div class="card-body">
                             <p><strong>Instale el paquete de código abierto de NGINX.</strong></p>
@@ -136,9 +434,18 @@
                             <samp>sudo systemctl restart nginx  </samp>
                         </div>
                     </div>
-                    <!---->
+                    <!------------------------------------------------------DNS--------------------------------------------------------------------->
                 </div>
                 <div class="tab-pane fade" id="nav-dns" role="tabpanel" aria-labelledby="nav-dns-tab">
+                    <h3>DNS</h3>
+                    <p class="lead">
+                        El Sistema de Nombres de Dominio o DNS es un sistema de nomenclatura jerárquico que se ocupa de la administración 
+                        del espacio de nombres de dominio (Domain Name Space). Su labor primordial consiste en resolver las peticiones de asignación de nombres                      
+                    </p>
+                    <p class="lead">
+                        el sistema de nombres de dominio recurre a una red global de servidores DNS, 
+                        que subdividen el espacio de nombres en zonas administradas de forma independiente las unas de las otras.                       
+                    </p>
                     <div class="card mt-1  mb-1">
                         <div class="card-body">
                             <p><strong>Establecer una ip estatica para el servidor.</strong></p>
@@ -159,6 +466,7 @@
                                     </textarea>
                                 </div>
                             </blockquote>
+                            <img src="img/dns1.PNG" class="img-fluid mx-auto d-block " alt="...">
                         </div>
                     </div>
                     <div class="card mt-1  mb-1">
@@ -196,6 +504,7 @@
                                     </textarea>
                                 </div>
                             </blockquote>
+                            <img src="img/dns2.PNG" class="img-fluid mx-auto d-block" alt="...">
                             <blockquote class="blockquote">
                                 <p>Zona indirecta </p>
                                 <div class="mb-3">
@@ -208,6 +517,7 @@
                                     </textarea>
                                 </div>
                             </blockquote>
+                            <img src="img/dns3.PNG" class="img-fluid mx-auto d-block" alt="...">
                         </div>
                     </div>
                     <div class="card mt-1  mb-1">
@@ -253,6 +563,7 @@
                                     </textarea>
                                 </div>
                             </blockquote>
+                            <img src="img/dns4.PNG" class="img-fluid mx-auto d-block" alt="...">
                         </div>
                     </div>
                     <div class="card mt-1  mb-1">
@@ -292,6 +603,7 @@
                                     </textarea>
                                 </div>
                             </blockquote>
+                            <img src="img/dns5  .PNG " class="img-fluid mx-auto d-block" alt="...">
                         </div>
                     </div>
                     <div class="card mt-1  mb-1">
@@ -342,16 +654,30 @@
                         <div class="card-body">
                             <p><strong>Utilice el comando dig para verificar la búsqueda directa </strong></p>
                             <samp>dig www.europa.net</samp>
+                            <img src="img/dns6.PNG" class="img-fluid mx-auto d-block" alt="...">
                         </div>
                     </div>  
                     <div class="card mt-1  mb-1">
                         <div class="card-body">
                             <p><strong>Confirme la búsqueda inversa con el comando dig. </strong></p>
                             <samp>dig -x 192.168.0.3</samp>
+                            <img src="img/dns7.PNG" class="img-fluid mx-auto d-block" alt="...">
                         </div>
                     </div>      
                 </div>
+                <!---------------------------------------NFS---------------------------------------------->
                 <div class="tab-pane fade" id="nav-nfs" role="tabpanel" aria-labelledby="nav-nfs-tab">
+                    <h3>NFS</h3>
+                    <p class="lead">
+                        El sistema de archivos de red (Network File System, NFS) es una aplicación cliente/servidor que permite a un usuario de equipo ver y, opcionalmente, 
+                        almacenar y actualizar archivos en un equipo remoto como si estuvieran en el propio equipo del usuario. 
+                        El protocolo NFS es uno de varios estándares de sistema de archivos distribuidos para almacenamiento atado a la red (NAS).                    
+                    </p>
+                    <p class="lead">
+                        NFS permite al usuario o administrador del sistema montar (designar como accesible) todo o una porción de un sistema de archivos en un servidor. 
+                        La parte del sistema de archivos que se monta puede ser accedida por los clientes con los privilegios que se asignan a cada archivo 
+                        (de sólo lectura o de lectura y escritura)                    
+                    </p>
                     <div class="card mt-1  mb-1">
                         <div class="card-body">
                             <p><strong>instalamos: </strong></p>
@@ -388,6 +714,7 @@
                                     </textarea>
                                 </div>
                             </blockquote>
+                            <img src="img/nfs1.PNG" class="img-fluid mx-auto d-block" alt="...">
                         </div>
                     </div>
                     <div class="card mt-1  mb-1">
@@ -427,13 +754,15 @@
                                     </textarea>
                                 </div>
                             </blockquote>
+                            <img src="img/nfs2.PNG" class="img-fluid mx-auto d-block" alt="...">
                         </div>
                     </div>  
                     <div class="card mt-1  mb-1">
                         <div class="card-body">
                             <p><strong>Monte el sistema de archivos NFS utilizando el comando mount de la siguiente manera.</strong></p>
-                            <p>Utilice el comando "df -h" para ver el punto de montaje como se muestra a continuación:</p>
                             <samp>sudo mount -a</samp>
+                            <p>Utilice el comando "df -h" para ver el punto de montaje como se muestra a continuación:</p>
+                            <img src="img/nfs3.PNG" class="img-fluid mx-auto d-block" alt="...">
                         </div>
                     </div>
                     <div class="card mt-1  mb-1">
@@ -441,6 +770,8 @@
                             <p><strong>Intentemos crear un archivo con comando touch en un recurso compartido NFS.</strong></p>
                             <samp>cd /mnt/shared_nfs</samp><br> 
                             <samp>touch archivoPrueba.txt</samp>
+                            <img src="img/nfs4.PNG" class="img-fluid mx-auto d-block" alt="...">
+                            <img src="img/nfs5.PNG" class="img-fluid mx-auto d-block" alt="...">
                         </div>
                     </div>    
                 </div>
