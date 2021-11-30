@@ -24,8 +24,8 @@
             <h1 class="display-4">Pasos para crear los servidores:</h1>
             <div class="card mt-3  mb-3">
                 <div class="card-body">
-                    Las diferentes configuraciones las hemos realizado en una máquina virtual con Debian 11, para configurar todo el entorno de trabajo para que funcione correctamente
-                    el Caso de Estudio dee Europa.
+                    Las diferentes configuraciones las hemos realizado en una máquina virtual con Debian 10, para configurar todo el entorno de trabajo para que funcione correctamente
+                    el Caso de Estudio de Europa.
                 </div>
                 <div class="card m-1">
                     <div class="card-body">
@@ -34,112 +34,123 @@
                     </div>
                 </div>  
             </div>
-
-            <ul class="nav nav-tabs">
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="index.html">HTTPS</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="dns.html">DNS</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="nfs.html">NFS</a>
-                </li>
-            </ul>                
-            <div class="card mt-1  mb-1">
-                <div class="card-body">
-                    <p><strong>Instale el paquete de código abierto de NGINX.</strong></p>
-                    <samp>sudo apt-get install nginx openssl </samp>
-                </div>
+                
+        
+        <nav>
+            <div class="nav nav-tabs" id="nav-tab" role="tablist">
+              <button class="nav-link active" id="nav-http-tab" data-bs-toggle="tab" data-bs-target="#nav-http" type="button" role="tab" aria-controls="nav-http" aria-selected="true">HTTP</button>
+              <button class="nav-link" id="nav-dns-tab" data-bs-toggle="tab" data-bs-target="#nav-dns" type="button" role="tab" aria-controls="nav-dns" aria-selected="false">DNS</button>
+              <button class="nav-link" id="nav-nfs-tab" data-bs-toggle="tab" data-bs-target="#nav-nfs" type="button" role="tab" aria-controls="nav-nfs" aria-selected="false">NFS</button>
             </div>
-            <div class="card mt-1  mb-1">
-                <div class="card-body">
-                    <p><strong>Verficacion del servicio habilitando NGNIX. </strong></p>
-                    <samp>sudo systemctl enable nginx </samp>
+          </nav>
+          <div class="tab-content" id="nav-tabContent">
+            <div class="tab-pane fade show active" id="nav-http" role="tabpanel" aria-labelledby="nav-http-tab">
+                <!---->
+                <div class="card mt-1  mb-1">
+                    <div class="card-body">
+                        <p><strong>Instale el paquete de código abierto de NGINX.</strong></p>
+                        <samp>sudo apt-get install nginx openssl </samp>
+                    </div>
                 </div>
-            </div>
-            <div class="card mt-1  mb-1">
-                <div class="card-body">
-                    <p><strong>Habilitar UFW lo cual el siguiente comando el cual carga el firewall y le permite iniciarse al arrancar el sistema.  </strong></p>
-                    <samp>sudo ufw enable  </samp>
+                <div class="card mt-1  mb-1">
+                    <div class="card-body">
+                        <p><strong>Verficacion del servicio habilitando NGNIX. </strong></p>
+                        <samp>sudo systemctl enable nginx </samp>
+                    </div>
                 </div>
-            </div>
-            <div class="card mt-1  mb-1">
-                <div class="card-body">
-                    <p><strong>Habilitar otras conexiones, para abrir los puertos 80 y 433.  </strong></p>
-                    <samp>sudo ufw allow 'Nginx Full'  </samp>
+                <div class="card mt-1  mb-1">
+                    <div class="card-body">
+                        <p><strong>Habilitar UFW lo cual el siguiente comando el cual carga el firewall y le permite iniciarse al arrancar el sistema.  </strong></p>
+                        <samp>sudo ufw enable  </samp>
+                    </div>
                 </div>
-            </div>
-            <div class="card mt-1  mb-1">
-                <div class="card-body">
-                    <p><strong>Revisamos el estado de NGINX y del Firewall. </strong></p>
-                    <samp>systemctl status nginx  </samp>
-                    <samp>sudo ufw status  </samp>
+                <div class="card mt-1  mb-1">
+                    <div class="card-body">
+                        <p><strong>Habilitar otras conexiones, para abrir los puertos 80 y 433.  </strong></p>
+                        <samp>sudo ufw allow 'Nginx Full'  </samp>
+                    </div>
                 </div>
-            </div>
-            <div class="card mt-1  mb-1">
-                <div class="card-body">
-                    <p><strong>Copia el directorio  </strong></p>
-                    <samp>sudo cp /etc/nginx/sites-available/default /etc/nginx/sites-available/europa.conf  </samp>
+                <div class="card mt-1  mb-1">
+                    <div class="card-body">
+                        <p><strong>Revisamos el estado de NGINX y del Firewall. </strong></p>
+                        <samp>systemctl status nginx  </samp>
+                        <samp>sudo ufw status  </samp>
+                    </div>
                 </div>
-            </div>
-            <div class="card mt-1  mb-1">
-                <div class="card-body">
-                    <p><strong>Borramos el directorio.</strong></p>
-                    <samp>sudo rm -f /etc/nginx/sites-enabled/default </samp>
+                <div class="card mt-1  mb-1">
+                    <div class="card-body">
+                        <p><strong>Copia el directorio  </strong></p>
+                        <samp>sudo cp /etc/nginx/sites-available/default /etc/nginx/sites-available/europa.conf  </samp>
+                    </div>
                 </div>
-            </div>
-            <div class="card mt-1  mb-1">
-                <div class="card-body">
-                    <p><strong>Enlace el siguiente directorio.</strong></p>
-                    <samp>sudo ln -s /etc/nginx/sites-available/europa.conf /etc/nginx/sites-enabled/  </samp>
+                <div class="card mt-1  mb-1">
+                    <div class="card-body">
+                        <p><strong>Borramos el directorio.</strong></p>
+                        <samp>sudo rm -f /etc/nginx/sites-enabled/default </samp>
+                    </div>
                 </div>
-            </div>
-            <div class="card mt-1  mb-1">
-                <div class="card-body">
-                    <p><strong>Creamos el certificado</strong></p>
-                    <samp>mkdir /etc/nginx/certificate </samp>
-                    <samp>cd /etc/nginx/certificate</samp>
-                    <samp>openssl req -new -newkey rsa:4096 -x509 -sha256 -days 365 -nodes -out nginx-certificate.crt -keyout nginx.key</samp>
+                <div class="card mt-1  mb-1">
+                    <div class="card-body">
+                        <p><strong>Enlace el siguiente directorio.</strong></p>
+                        <samp>sudo ln -s /etc/nginx/sites-available/europa.conf /etc/nginx/sites-enabled/  </samp>
+                    </div>
                 </div>
-            </div>
-            <div class="card mt-1  mb-1">
-                <div class="card-body">
-                    <p><strong>Editamos el archivo europa.conf</strong></p>
-                    <samp>sudo nano /etc/nginx/sites-available/europa.conf </samp>
-                    <blockquote class="blockquote">
-                        <p>Dejamos el archivo asi: </p>
-                        <div class="mb-3">
-                            <textarea class="form-control" id="exampleFormControlTextarea1" disabled rows="20">
-                                server {
-                                    listen 80 default_server;
-                                    listen [::]:80 default_server;
-                                    server_name europa.net www.europa.net; ;
-                                    return 301 https://$host$request_uri;
-                                }
-                                server {
-                                        listen 443 ssl default_server;
-                                        listen [::]:443 ssl default_server;
-                                        ssl_certificate /etc/nginx/certificate/nginx-certificate.crt;
-                                        ssl_certificate_key /etc/nginx/certificate/nginx.key;
-                                        root /var/www/html;
-                                        index index.html index.htm index.nginx-debian.html;
+                <div class="card mt-1  mb-1">
+                    <div class="card-body">
+                        <p><strong>Creamos el certificado</strong></p>
+                        <samp>mkdir /etc/nginx/certificate
+                        <samp>cd /etc/nginx/certificate</samp>
+                        <samp>openssl req -new -newkey rsa:4096 -x509 -sha256 -days 365 -nodes -out nginx-certificate.crt -keyout nginx.key</samp>
+                    </div>
+                </div>
+                <div class="card mt-1  mb-1">
+                    <div class="card-body">
+                        <p><strong>Editamos el archivo europa.conf</strong></p>
+                        <samp>sudo nano /etc/nginx/sites-available/europa.conf </samp>
+                        <blockquote class="blockquote">
+                            <p>Dejamos el archivo asi: </p>
+                            <div class="mb-3">
+                                <textarea class="form-control" id="exampleFormControlTextarea1" disabled rows="20">
+                                    server {
+                                        listen 80 default_server;
+                                        listen [::]:80 default_server;
                                         server_name europa.net www.europa.net; ;
-                                        location / {
-                                                try_files $uri $uri/ =404;
-                                        }
-                                }
-                            </textarea>
-                        </div>
-                    </blockquote>
+                                        return 301 https://$host$request_uri;
+                                    }
+                                    server {
+                                            listen 443 ssl default_server;
+                                            listen [::]:443 ssl default_server;
+                                            ssl_certificate /etc/nginx/certificate/nginx-certificate.crt;
+                                            ssl_certificate_key /etc/nginx/certificate/nginx.key;
+                                            root /var/www/html;
+                                            index index.html index.htm index.nginx-debian.html;
+                                            server_name europa.net www.europa.net; ;
+                                            location / {
+                                                    try_files $uri $uri/ =404;
+                                            }
+                                    }
+                                </textarea>
+                            </div>
+                        </blockquote>
+                    </div>
                 </div>
-            </div>
-            <div class="card mt-1  mb-1">
-                <div class="card-body">
-                    <p><strong>Guardamosel archivo  <kbd><kbd>ctrl</kbd> + <kbd>X</kbd></kbd> -> <kbd>S</kbd> -><kbd>Enter</kbd> y Reiniciamos el servicio</strong></p>
-                    <samp>sudo systemctl restart nginx  </samp>
+                <div class="card mt-1  mb-1">
+                    <div class="card-body">
+                        <p><strong>Guardamosel archivo  <kbd><kbd>ctrl</kbd> + <kbd>X</kbd></kbd> -> <kbd>S</kbd> -><kbd>Enter</kbd> y Reiniciamos el servicio</strong></p>
+                        <samp>sudo systemctl restart nginx  </samp>
+                    </div>
                 </div>
+                <!---->
             </div>
+            <div class="tab-pane fade" id="nav-dns" role="tabpanel" aria-labelledby="nav-dns-tab">
+                <!--Aqui pone lo de DNS-->
+                <!---->
+            </div>
+            <div class="tab-pane fade" id="nav-nfs" role="tabpanel" aria-labelledby="nav-nfs-tab">
+                <!--Aqui pone lo de NFS-->
+                <!---->
+            </div>
+          </div>
         </div>
         <footer class="footer mt-auto py-3 bg-dark text-white">
             <div class="container">
